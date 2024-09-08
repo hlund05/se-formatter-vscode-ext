@@ -16,11 +16,22 @@
       "command": "se-formatter.emtag",
       "title": "SE Formatter - Add <em> tags"
     }],
+    "submenus": [
+      {
+        "id": "se.submenu",
+        "label": "SE Formatting"
+      }
+    ],
     "menus": {
       "editor/context": [
         {
+          "submenu": "se.submenu",
+          "group": "se"
+        }
+      ],
+      "se.submenu": [
+        {
           "command": "se-formatter.emtag",
-          "group": "SE",
           "when": "editorTextFocus"
         }
       ]
