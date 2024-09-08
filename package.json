@@ -15,7 +15,16 @@
     "commands": [{
       "command": "se-formatter.emtag",
       "title": "SE Formatter - Add <em> tags"
-    }]
+    }],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "se-formatter.emtag",
+          "group": "SE",
+          "when": "editorTextFocus"
+        }
+      ]
+    }
   },
   "scripts": {
     "lint": "eslint .",
