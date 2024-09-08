@@ -13,8 +13,8 @@
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "se-formatter.helloWorld",
-      "title": "Hello World"
+      "command": "se-formatter.emtag",
+      "title": "SE Formatter - Add <em> tags"
     }]
   },
   "scripts": {

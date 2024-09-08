@@ -17,11 +17,31 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('se-formatter.helloWorld', function () {
+	const disposable = vscode.commands.registerCommand('se-formatter.emtag', function () {
 		// The code you place here will be executed every time your command is executed
+		// Get the active text editor
+		const editor = vscode.window.activeTextEditor;
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from se-formatter!');
+		if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+
+			// Get the word within the selection
+			const words = document.getText(selection);
+			console.log(words)
+			
+			// Display a message box to the user
+			vscode.window.showInformationMessage(words);
+
+			const opentag = "<em>"
+			const closetag = "</em>"
+
+			//Replace text in editor
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, opentag + words + closetag);
+			});
+		}
+
 	});
 
 	context.subscriptions.push(disposable);
