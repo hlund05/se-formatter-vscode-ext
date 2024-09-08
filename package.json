@@ -12,10 +12,16 @@
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "se-formatter.emtag",
-      "title": "SE Formatter - Add <em> tags"
-    }],
+    "commands": [
+      {
+        "command": "se-formatter.emtag",
+        "title": "SE Formatter - Add <em> tags"
+      },
+      {
+        "command": "se-formatter.itag",
+        "title": "SE Formatter - Add <i> tags"
+      }
+    ],
     "submenus": [
       {
         "id": "se.submenu",
@@ -32,6 +38,10 @@
       "se.submenu": [
         {
           "command": "se-formatter.emtag",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "se-formatter.itag",
           "when": "editorTextFocus"
         }
       ]
