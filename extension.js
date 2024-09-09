@@ -113,6 +113,44 @@ function activate(context) {
 
 	});
 
+	const addepubCommand = vscode.commands.registerCommand('se-formatter.addepub', function () {
+		// Get the active text editor
+		const editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+
+			// Get the word within the selection
+			const words = document.getText(selection);
+
+			//Replace text in editor
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, " epub:type=\"\"");
+			});
+		}
+
+	});
+
+	const addxmlCommand = vscode.commands.registerCommand('se-formatter.addxml', function () {
+		// Get the active text editor
+		const editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+
+			// Get the word within the selection
+			const words = document.getText(selection);
+
+			//Replace text in editor
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, " xml:lang=\"\"");
+			});
+		}
+
+	});
+
 	let openDictUrlCommand = vscode.commands.registerCommand('se-formatter.openDictUrl', () => {
 		// Get the active text editor
 		const editor = vscode.window.activeTextEditor;
@@ -134,6 +172,9 @@ function activate(context) {
 	context.subscriptions.push(itagCommand);
 	context.subscriptions.push(btagCommand);
 	context.subscriptions.push(strongtagCommand);
+	context.subscriptions.push(spantagCommand);
+	context.subscriptions.push(addepubCommand);
+	context.subscriptions.push(addxmlCommand);
 	context.subscriptions.push(openDictUrlCommand);
 }
 

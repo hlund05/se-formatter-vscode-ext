@@ -30,12 +30,20 @@
         "title": "Wrap in <i> tags"
       },
       {
-        "command": "se-formatter.strongtag",
+        "command": "se-formatter.spantag",
         "title": "Wrap in <span> tags"
       },
       {
         "command": "se-formatter.strongtag",
         "title": "Wrap in <strong> tags"
+      },
+      {
+        "command": "se-formatter.addepub",
+        "title": "Add epub:type"
+      },
+      {
+        "command": "se-formatter.addxml",
+        "title": "Add xml:lang"
       }
     ],
     "submenus": [
@@ -74,6 +82,14 @@
         },
         {
           "command": "se-formatter.strongtag",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "se-formatter.addepub",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "se-formatter.addxml",
           "when": "editorTextFocus"
         }
       ]
