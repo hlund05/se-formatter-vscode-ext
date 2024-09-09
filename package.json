@@ -14,18 +14,34 @@
   "contributes": {
     "commands": [
       {
+        "command": "se-formatter.openDictUrl",
+        "title": "Look up in Dictionary..."
+      },
+      {
+        "command": "se-formatter.btag",
+        "title": "Wrap in <b> tags"
+      },
+      {
         "command": "se-formatter.emtag",
-        "title": "SE Formatter - Add <em> tags"
+        "title": "Wrap in <em> tags"
       },
       {
         "command": "se-formatter.itag",
-        "title": "SE Formatter - Add <i> tags"
+        "title": "Wrap in <i> tags"
+      },
+      {
+        "command": "se-formatter.strongtag",
+        "title": "Wrap in <span> tags"
+      },
+      {
+        "command": "se-formatter.strongtag",
+        "title": "Wrap in <strong> tags"
       }
     ],
     "submenus": [
       {
         "id": "se.submenu",
-        "label": "SE Formatting"
+        "label": "SE Tools"
       }
     ],
     "menus": {
@@ -37,11 +53,27 @@
       ],
       "se.submenu": [
         {
+          "command": "se-formatter.openDictUrl",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "se-formatter.btag",
+          "when": "editorTextFocus"
+        },
+        {
           "command": "se-formatter.emtag",
           "when": "editorTextFocus"
         },
         {
           "command": "se-formatter.itag",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "se-formatter.spantag",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "se-formatter.strongtag",
           "when": "editorTextFocus"
         }
       ]

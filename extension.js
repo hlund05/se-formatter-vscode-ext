@@ -18,9 +18,7 @@ function activate(context) {
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
 
-	//<em> tag function
-	const disposable = vscode.commands.registerCommand('se-formatter.emtag', function () {
-		// The code you place here will be executed every time your command is executed
+	const emtagCommand = vscode.commands.registerCommand('se-formatter.emtag', function () {
 		// Get the active text editor
 		const editor = vscode.window.activeTextEditor;
 
@@ -30,26 +28,16 @@ function activate(context) {
 
 			// Get the word within the selection
 			const words = document.getText(selection);
-			console.log(words)
-			
-			// Display a message box to the user
-			vscode.window.showInformationMessage(words);
-
-			const opentag = "<em>"
-			const closetag = "</em>"
 
 			//Replace text in editor
 			editor.edit(editBuilder => {
-				editBuilder.replace(selection, opentag + words + closetag);
+				editBuilder.replace(selection, "<em>" + words + "</em>");
 			});
 		}
 
 	});
-	context.subscriptions.push(disposable);
 
-	//<i> tag function
-	const disposable2 = vscode.commands.registerCommand('se-formatter.itag', function () {
-		// The code you place here will be executed every time your command is executed
+	const itagCommand = vscode.commands.registerCommand('se-formatter.itag', function () {
 		// Get the active text editor
 		const editor = vscode.window.activeTextEditor;
 
@@ -59,22 +47,94 @@ function activate(context) {
 
 			// Get the word within the selection
 			const words = document.getText(selection);
-			console.log(words)
-			
-			// Display a message box to the user
-			vscode.window.showInformationMessage(words);
-
-			const opentag = "<i>"
-			const closetag = "</i>"
 
 			//Replace text in editor
 			editor.edit(editBuilder => {
-				editBuilder.replace(selection, opentag + words + closetag);
+				editBuilder.replace(selection, "<i>" + words + "</i>");
 			});
 		}
 
 	});
-	context.subscriptions.push(disposable2);
+
+	const btagCommand = vscode.commands.registerCommand('se-formatter.btag', function () {
+		// Get the active text editor
+		const editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+
+			// Get the word within the selection
+			const words = document.getText(selection);
+
+			//Replace text in editor
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, "<b>" + words + "</b>");
+			});
+		}
+
+	});
+
+	const strongtagCommand = vscode.commands.registerCommand('se-formatter.strongtag', function () {
+		// Get the active text editor
+		const editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+
+			// Get the word within the selection
+			const words = document.getText(selection);
+
+			//Replace text in editor
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, "<strong>" + words + "</strong>");
+			});
+		}
+
+	});
+
+	const spantagCommand = vscode.commands.registerCommand('se-formatter.spantag', function () {
+		// Get the active text editor
+		const editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+
+			// Get the word within the selection
+			const words = document.getText(selection);
+
+			//Replace text in editor
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, "<span>" + words + "</span>");
+			});
+		}
+
+	});
+
+	let openDictUrlCommand = vscode.commands.registerCommand('se-formatter.openDictUrl', () => {
+		// Get the active text editor
+		const editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+
+			// Get the word within the selection, add to URL
+			const words = document.getText(selection);
+			const url = vscode.Uri.parse('https://www.merriam-webster.com/dictionary/' + words); 
+			console.log(url);
+			vscode.env.openExternal(url);  // Opens the URL in the default browser
+		}
+	});
+
+	// Push disposables to the context's subscriptions array
+	context.subscriptions.push(emtagCommand);
+	context.subscriptions.push(itagCommand);
+	context.subscriptions.push(btagCommand);
+	context.subscriptions.push(strongtagCommand);
+	context.subscriptions.push(openDictUrlCommand);
 }
 
 
